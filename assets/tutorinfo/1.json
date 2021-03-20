@@ -1,0 +1,6 @@
+{
+    "name": ["John", "", "Doe"], 
+    "grade": 12, 
+    "open-times": [["1:30 PM", "2:30 PM"], ["2:30 PM", "3:30 PM"]], 
+    "subjects": ["math-precalculus", "wl-spanish", "wl-german", "sci-chemistry"]
+}
