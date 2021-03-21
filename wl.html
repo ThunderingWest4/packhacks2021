@@ -58,7 +58,7 @@
 										<script>
 											window.onload = function() {
 												let innercontent;
-												fetch("http://127.0.0.1:5000/api/v1/tutors/opentimes/math").then(function(response) {
+												fetch("http://127.0.0.1:5000/api/v1/tutors/getsubj/?subj=wl").then(function(response) {
 													// return response.json();
 													innercontent = response.json();
 													console.log(response, "a", innercontent);
