@@ -19,8 +19,8 @@ def home():
 def api_all():
     return jsonify(tutors)
 
-@app.route('/api/v1/tutors/opentimes', methods=['GET'])
-def open_times():
+@app.route('/api/v1/tutors/opentimes/', methods=['GET'])
+def broad_open_times():
     times = []
     for tutor in tutors:
         tutor_times = tutor["open-times"]
@@ -30,6 +30,20 @@ def open_times():
                 times.append(x)
                 # making sure we don't add duplicate
                 # maybe in future we add feature where it shows how many tutors availible at specific time slot?
+    return jsonify(times)
+
+@app.route('/api/v1/tutors/opentimes/math', methods=['GET'])
+def open_math():
+    times = []
+    for tutor in tutors:
+        if "math" in tutor["broad-subjs"]:
+            tutor_times = tutor["open-times"]
+            formatted = ["-".join(x) for x in tutor_times]
+            for x in formatted:
+                if x not in times:      
+                    times.append(x)
+                    # making sure we don't add duplicate
+                    # maybe in future we add feature where it shows how many tutors availible at specific time slot?
     return jsonify(times)
 
 # general "which tutors teach math"
