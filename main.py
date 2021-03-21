@@ -48,25 +48,9 @@ def open_math():
 
 # general "which tutors teach math"
 @app.route('/api/v1/tutors/math', methods=['GET'])
-def math_tutors():
-    return jsonify([tutor for tutor in tutors if "math" in tutor["broad-subjs"]])
+def subj_tutor():
+    subj = request.args.get("subj")
+    return jsonify([tutor for tutor in tutors if subj in tutor["broad-subjs"]]) if subj in ["math", "eng", "wl", "sci"] else jsonify({"ERROR": f"invalid subject {subj} request"})
 
-
-# general "which tutors teach math"
-@app.route('/api/v1/tutors/eng', methods=['GET'])
-def eng_tutors():
-    return jsonify([tutor for tutor in tutors if "eng" in tutor["broad-subjs"]])
-
-
-# general "which tutors teach math"
-@app.route('/api/v1/tutors/wl', methods=['GET'])
-def wl_tutors():
-    return jsonify([tutor for tutor in tutors if "wl" in tutor["broad-subjs"]])
-
-
-# general "which tutors teach math"
-@app.route('/api/v1/tutors/sci', methods=['GET'])
-def sci_tutors():
-    return jsonify([tutor for tutor in tutors if "sci" in tutor["broad-subjs"]])
 
 app.run()
